@@ -37,3 +37,12 @@ violation of this policy, run the following script:
 ```
 python list_repos_with_direct_members.py
 ```
+
+#### Find repositories without branch protection rules
+
+We want all repositories to have a ruleset in place requiring pull requests to
+the default branch. To generate a list of all repositories in violation of
+this policy, run the following script:
+```
+python list_repos_without_branch_protection.py
+```
