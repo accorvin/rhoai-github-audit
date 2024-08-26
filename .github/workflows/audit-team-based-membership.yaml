@@ -14,6 +14,6 @@ jobs:
         run: pip install pygithub tqdm
       - name: Run audit script
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHUB_TOKEN }}
         run: |
           python list_repos_with_direct_members.py -e -o opendatahub-io
