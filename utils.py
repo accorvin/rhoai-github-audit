@@ -1,14 +1,17 @@
 import os
 
 
-def get_github_token():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    token_file_path = os.path.join(dir_path, '.github_token')
-    if not os.path.exists(token_file_path):
-        print(f'You must create your GitHub token file at {token_file_path}')
-        exit(1)
-    with open(token_file_path) as f:
-        return f.read().strip()
+def get_github_token(use_env=False):
+    if use_env:
+        return os.environ['GITHUB_TOKEN']
+    else:
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        token_file_path = os.path.join(dir_path, '.github_token')
+        if not os.path.exists(token_file_path):
+            print(f'You must create your GitHub token file at {token_file_path}')
+            exit(1)
+        with open(token_file_path) as f:
+            return f.read().strip()
     
 
 def get_organization_repositories(github_client, org_name):
