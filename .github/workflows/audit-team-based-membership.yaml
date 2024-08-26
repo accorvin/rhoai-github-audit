@@ -3,7 +3,7 @@ name: Audit repositories for team based membersihp
 on:
   workflow_dispatch: {}
 jobs:
-  merge_membership_config:
+  audit_teams_based_membership:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -13,5 +13,7 @@ jobs:
       - name: Install python packages
         run: pip install pygithub tqdm
       - name: Run audit script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python list_repos_with_direct_members.py -e -o opendatahub-io
